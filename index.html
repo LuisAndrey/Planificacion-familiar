@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planificación Familiar · Guía Completa</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,900;1,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --sage:#2D6A4F;--sage-light:#52B788;--sage-pale:#D8F3DC;
+  --coral:#E07A5F;--coral-pale:#FDEBD0;
+  --violet:#5C4D8A;--violet-pale:#EDE9F8;
+  --gold:#C9A84C;--gold-pale:#FDF3DC;
+  --teal:#1B7F8E;--teal-pale:#D4F1F4;
+  --rose:#B5446E;--rose-pale:#FCE8F0;
+  --cream:#FAF6F0;--white:#FFFFFF;
+  --ink:#1A1A2E;--ink-soft:#4A4A6A;--ink-muted:#8888AA;
+  --border:#E8E4F0;
+  --shadow:0 4px 24px rgba(26,26,46,.08);
+  --shadow-lg:0 12px 48px rgba(26,26,46,.14);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh}
+
+/* ── HERO ── */
+.hero{
+  background:linear-gradient(135deg,#1A1A2E 0%,#2D6A4F 45%,#1B7F8E 100%);
+  padding:3rem 1.5rem 4rem;text-align:center;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 80% at 70% 30%,rgba(82,183,136,.25) 0%,transparent 60%),
+             radial-gradient(ellipse 40% 60% at 20% 80%,rgba(92,77,138,.3) 0%,transparent 50%);
+}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(60px);opacity:.35}
+.hero-orb-1{width:300px;height:300px;background:var(--sage-light);top:-80px;right:-60px}
+.hero-orb-2{width:200px;height:200px;background:var(--violet);bottom:-60px;left:-40px}
+.hero-content{position:relative;z-index:1;max-width:700px;margin:0 auto}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:100px;padding:6px 16px;font-size:12px;font-weight:500;color:rgba(255,255,255,.85);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.25rem}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:1rem}
+.hero h1 em{font-style:italic;color:#95D5B2}
+.hero p{font-size:1rem;color:rgba(255,255,255,.75);max-width:520px;margin:0 auto 2rem;line-height:1.7}
+.hero-stats{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.hero-stat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:.6rem 1.2rem;text-align:center}
+.hero-stat-num{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:600;color:#fff;display:block}
+.hero-stat-lbl{font-size:11px;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.06em}
+
+/* ── NAV TABS ── */
+.tab-nav{display:flex;gap:0;background:var(--white);border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(26,26,46,.06)}
+.tab-btn{flex:1;padding:1rem;border:none;background:transparent;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:500;color:var(--ink-muted);cursor:pointer;transition:all .25s;position:relative}
+.tab-btn::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:3px;background:var(--sage);border-radius:3px 3px 0 0;transform:scaleX(0);transition:transform .25s}
+.tab-btn.active{color:var(--sage);font-weight:600}
+.tab-btn.active::after{transform:scaleX(1)}
+.tab-icon{display:block;font-size:1.4rem;margin-bottom:2px}
+
+/* ── LAYOUT ── */
+.page-wrap{max-width:900px;margin:0 auto;padding:2rem 1rem 4rem}
+
+/* ── SECTION HEADERS ── */
+.sec-head{margin:2.5rem 0 1.25rem;display:flex;align-items:center;gap:.75rem}
+.sec-head-line{flex:1;height:1px;background:var(--border)}
+.sec-head-text{font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--ink-soft);white-space:nowrap;padding:0 .5rem}
+.sec-label{display:inline-flex;align-items:center;gap:6px;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;padding:.35rem .9rem;border-radius:100px;margin-bottom:.75rem}
+
+/* ── METHOD CARDS ── */
+.method-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;margin-bottom:.5rem}
+.method-card{background:var(--white);border:1.5px solid var(--border);border-radius:20px;padding:1.25rem;cursor:pointer;transition:all .25s;position:relative;overflow:hidden}
+.method-card::before{content:'';position:absolute;inset:0;background:var(--method-accent,var(--sage-pale));opacity:0;transition:opacity .25s}
+.method-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.method-card.open{border-color:var(--method-color,var(--sage));box-shadow:var(--shadow)}
+.method-card.open::before{opacity:.04}
+.card-top{display:flex;align-items:center;gap:.75rem;position:relative;z-index:1}
+.method-icon-wrap{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:var(--method-bg,var(--sage-pale));flex-shrink:0}
+.method-icon-svg{width:30px;height:30px}
+.card-meta{flex:1}
+.method-name{font-size:.9rem;font-weight:600;color:var(--ink);margin-bottom:.3rem}
+.method-chip{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;padding:.2rem .6rem;border-radius:100px;background:var(--method-chip-bg,#eee);color:var(--method-chip-text,#666)}
+.expand-arrow{width:28px;height:28px;border-radius:8px;background:var(--border);display:flex;align-items:center;justify-content:center;transition:all .25s;flex-shrink:0;color:var(--ink-muted)}
+.method-card.open .expand-arrow{background:var(--method-color,var(--sage));color:#fff;transform:rotate(180deg)}
+.expand-arrow svg{width:14px;height:14px}
+
+.method-detail{display:none;margin-top:1rem;border-top:1px solid var(--border);padding-top:1rem;position:relative;z-index:1}
+.method-card.open .method-detail{display:block}
+
+.info-table{width:100%;margin-bottom:1rem;border-collapse:separate;border-spacing:0 4px}
+.info-table td{font-size:.8rem;padding:.3rem .5rem;vertical-align:top}
+.info-table td:first-child{font-weight:600;color:var(--ink-soft);white-space:nowrap;width:90px}
+.info-table td:last-child{color:var(--ink)}
+
+.pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:.5rem}
+.pros,.cons{background:var(--cream);border-radius:10px;padding:.6rem .8rem}
+.pros h4{color:var(--sage);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem}
+.cons h4{color:var(--coral);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem}
+.pros li,.cons li{font-size:.75rem;color:var(--ink-soft);list-style:none;padding-left:1rem;position:relative;margin-bottom:.25rem;line-height:1.4}
+.pros li::before{content:'✓';position:absolute;left:0;color:var(--sage);font-weight:700}
+.cons li::before{content:'✗';position:absolute;left:0;color:var(--coral)}
+
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;font-weight:600;padding:.2rem .65rem;border-radius:100px}
+.badge-ok{background:#E8F7EE;color:#1E6B42}
+.badge-warn{background:#FFF3DC;color:#8A5A00}
+.badge-no{background:#FCECEC;color:#9B2626}
+
+.alert-box{border-radius:10px;padding:.65rem .9rem;font-size:.78rem;line-height:1.5;margin:.6rem 0}
+.alert-warn{background:var(--gold-pale);color:#7A5200;border-left:3px solid var(--gold)}
+.alert-ok{background:var(--sage-pale);color:#1A5E32;border-left:3px solid var(--sage)}
+.alert-danger{background:var(--rose-pale);color:#8A2040;border-left:3px solid var(--rose)}
+
+/* ── GAMES TAB ── */
+.games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-bottom:2rem}
+.game-card{background:var(--white);border:1.5px solid var(--border);border-radius:20px;padding:1.5rem 1.25rem;text-align:center;cursor:pointer;transition:all .25s;position:relative;overflow:hidden}
+.game-card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .25s;background:var(--game-grad)}
+.game-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:transparent}
+.game-card:hover::before{opacity:1}
+.game-card>*{position:relative;z-index:1}
+.game-card:hover .game-name,.game-card:hover .game-desc{color:#fff}
+.game-icon-wrap{width:70px;height:70px;border-radius:20px;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-size:2rem;background:var(--game-bg,var(--cream))}
+.game-name{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:.4rem;transition:color .25s}
+.game-desc{font-size:.8rem;color:var(--ink-muted);margin-bottom:1rem;transition:color .25s}
+.play-btn{display:inline-flex;align-items:center;gap:6px;padding:.6rem 1.4rem;border-radius:100px;border:none;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:600;cursor:pointer;background:var(--ink);color:#fff;transition:all .25s}
+.game-card:hover .play-btn{background:#fff;color:var(--ink)}
+
+/* ── GAME AREA ── */
+.game-area{display:none;background:var(--white);border:1.5px solid var(--border);border-radius:24px;padding:1.75rem;box-shadow:var(--shadow)}
+.game-area.active{display:block}
+.game-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem}
+.game-title{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:700;color:var(--ink)}
+.back-btn{display:inline-flex;align-items:center;gap:4px;padding:.5rem 1rem;border-radius:100px;border:1.5px solid var(--border);background:transparent;font-size:.8rem;font-weight:500;cursor:pointer;color:var(--ink-soft);transition:all .2s}
+.back-btn:hover{background:var(--cream)}
+
+.score-row{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1rem}
+.score-pill{background:var(--cream);border:1.5px solid var(--border);border-radius:12px;padding:.5rem 1rem;text-align:center}
+.score-pill-val{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:700;color:var(--ink);display:block}
+.score-pill-lbl{font-size:.68rem;font-weight:600;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.07em}
+
+.prog-bar{height:6px;background:var(--border);border-radius:100px;margin-bottom:1.25rem;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--sage),var(--teal));border-radius:100px;transition:width .4s}
+
+/* ── QUIZ ── */
+.q-card{background:var(--cream);border-radius:16px;padding:1.25rem}
+.q-text{font-size:.95rem;font-weight:600;color:var(--ink);margin-bottom:1rem;line-height:1.5}
+.q-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.q-opt{padding:.75rem 1rem;border:1.5px solid var(--border);border-radius:12px;background:var(--white);font-family:'DM Sans',sans-serif;font-size:.8rem;cursor:pointer;text-align:left;color:var(--ink);transition:all .18s;line-height:1.4}
+.q-opt:hover{border-color:var(--sage);background:var(--sage-pale)}
+.q-opt.correct{background:#E8F7EE;border-color:var(--sage);color:#1E6B42;font-weight:500}
+.q-opt.wrong{background:#FCECEC;border-color:var(--coral);color:#9B2626}
+.q-feedback{padding:.8rem 1rem;border-radius:12px;font-size:.82rem;margin-top:.75rem;display:none;line-height:1.5}
+.q-feedback.show{display:block}
+.q-feedback.ok{background:#E8F7EE;color:#1E6B42;border-left:3px solid var(--sage)}
+.q-feedback.fail{background:#FCECEC;color:#9B2626;border-left:3px solid var(--coral)}
+.next-btn{margin-top:1rem;padding:.7rem 1.75rem;border-radius:100px;border:none;background:linear-gradient(135deg,var(--sage),var(--teal));color:#fff;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:600;cursor:pointer;display:none;transition:all .2s}
+.next-btn:hover{opacity:.9;transform:translateY(-1px)}
+
+/* ── MYTHS ── */
+.myth-cols{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.myth-col-head{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;text-align:center;margin-bottom:.6rem;padding:.4rem;border-radius:8px}
+.myth-col-head.left{color:var(--coral);background:var(--coral-pale)}
+.myth-col-head.right{color:var(--sage);background:var(--sage-pale)}
+.myth-item{background:var(--cream);border:1.5px solid transparent;border-radius:12px;padding:.7rem .85rem;margin-bottom:.5rem;font-size:.78rem;cursor:pointer;color:var(--ink);transition:all .18s;text-align:center;line-height:1.4}
+.myth-item:hover{border-color:var(--violet);background:var(--violet-pale)}
+.myth-item.selected{border-color:var(--violet);background:var(--violet-pale);color:var(--violet)}
+.myth-item.matched{background:var(--sage-pale);border-color:var(--sage);color:#1E6B42;cursor:default}
+.myth-item.wrong-match{background:var(--coral-pale);border-color:var(--coral)}
+
+/* ── CANDY CRUSH ── */
+.cc-wrap{max-width:460px;margin:0 auto}
+.cc-legend{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+.cc-legend-item{display:flex;align-items:center;gap:5px;font-size:.72rem;color:var(--ink-soft);background:var(--cream);border-radius:100px;padding:.25rem .6rem}
+.cc-board{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:1rem}
+.cc-cell{aspect-ratio:1;border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;border:2px solid transparent;transition:all .15s;background:var(--cream);position:relative;overflow:hidden}
+.cc-cell:hover{transform:scale(1.06)}
+.cc-cell.selected{border-color:var(--violet);transform:scale(1.1);box-shadow:0 0 0 3px var(--violet-pale)}
+.cc-cell.matched{animation:pop .3s ease forwards}
+.cc-cell-inner{width:80%;height:80%;border-radius:8px;display:flex;align-items:center;justify-content:center}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.35);opacity:.7}100%{transform:scale(0);opacity:0}}
+.level-msg{background:linear-gradient(135deg,var(--sage),var(--teal));color:#fff;border-radius:16px;padding:1rem 1.25rem;text-align:center;font-size:.88rem;font-weight:500;margin-top:1rem;display:none;line-height:1.6}
+.level-msg.show{display:block}
+
+/* ── END SCREENS ── */
+.end-screen{text-align:center;padding:2rem 1rem}
+.end-trophy{font-size:3.5rem;margin-bottom:.75rem}
+.end-title{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;color:var(--ink);margin-bottom:.4rem}
+.end-sub{font-size:.88rem;color:var(--ink-muted);margin-bottom:1.5rem}
+.end-score{font-family:'Fraunces',serif;font-size:2.5rem;font-weight:900;color:var(--sage)}
+
+/* ── METHOD SVG ICONS ── */
+.icon-condon{fill:none;stroke:#1D9E75;stroke-width:2.5;stroke-linecap:round}
+.icon-diu{fill:none;stroke:#378ADD;stroke-width:2.5;stroke-linecap:round}
+.icon-implante{fill:none;stroke:#7F77DD;stroke-width:2.5;stroke-linecap:round}
+.icon-pildora{fill:none;stroke:#D4537E;stroke-width:2.5;stroke-linecap:round}
+.icon-parche{fill:none;stroke:#BA7517;stroke-width:2.5;stroke-linecap:round}
+.icon-anillo{fill:none;stroke:#1B7F8E;stroke-width:2.5;stroke-linecap:round}
+.icon-mela{fill:none;stroke:#639922;stroke-width:2.5;stroke-linecap:round}
+.icon-emergencia{fill:none;stroke:#B5446E;stroke-width:2.5;stroke-linecap:round}
+.icon-vasectomia{fill:none;stroke:#5C4D8A;stroke-width:2.5;stroke-linecap:round}
+.icon-ligadura{fill:none;stroke:#C9A84C;stroke-width:2.5;stroke-linecap:round}
+
+/* ── INTRO BANNER ── */
+.intro-banner{background:linear-gradient(135deg,var(--violet-pale),var(--teal-pale));border:1.5px solid #C5C0E8;border-radius:20px;padding:1.25rem 1.5rem;margin-bottom:2rem;display:flex;align-items:center;gap:1rem}
+.intro-banner-icon{font-size:2rem;flex-shrink:0}
+.intro-banner p{font-size:.85rem;color:var(--ink-soft);line-height:1.6}
+.intro-banner strong{color:var(--violet)}
+
+/* ── COMBINED ALERT ── */
+.combined-alert{background:var(--gold-pale);border:1.5px solid #E4C06E;border-radius:16px;padding:1rem 1.25rem;margin-bottom:1rem;font-size:.82rem;color:#7A5200;line-height:1.6}
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px){
+  .q-opts,.pros-cons,.myth-cols{grid-template-columns:1fr}
+  .hero-stats{gap:.6rem}
+  .cc-cell{border-radius:8px}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-content">
+    <div class="hero-tag">🌿 Salud Sexual y Reproductiva</div>
+    <h1>Planificación<br><em>Familiar</em></h1>
+    <p>Información clara, completa y confiable sobre métodos anticonceptivos. Aprende a tu ritmo con juegos interactivos.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="hero-stat-num">12</span><span class="hero-stat-lbl">Métodos</span></div>
+      <div class="hero-stat"><span class="hero-stat-num">3</span><span class="hero-stat-lbl">Juegos</span></div>
+      <div class="hero-stat"><span class="hero-stat-num">10</span><span class="hero-stat-lbl">Preguntas</span></div>
+      <div class="hero-stat"><span class="hero-stat-num">10</span><span class="hero-stat-lbl">Niveles</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TAB NAV ═══ -->
+<nav class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('info')">
+    <span class="tab-icon">📖</span>Información
+  </button>
+  <button class="tab-btn" onclick="showTab('games')">
+    <span class="tab-icon">🎮</span>Juegos
+  </button>
+</nav>
+
+<!-- ═══ INFO TAB ═══ -->
+<div id="tab-info" class="page-wrap">
+
+  <div class="intro-banner">
+    <div class="intro-banner-icon">💡</div>
+    <p>Toca cualquier tarjeta para ver la información detallada de cada método. Conocer tus opciones es el primer paso para tomar decisiones informadas. <strong>¡Ningún método es mejor que otro en abstracto; el mejor es el que funciona para ti!</strong></p>
+  </div>
+
+  <!-- SOLO PROGESTERONA -->
+  <div class="sec-head">
+    <div class="sec-head-line"></div>
+    <span class="sec-head-text">Solo Progesterona · Sin estrógenos</span>
+    <div class="sec-head-line"></div>
+  </div>
+  <div class="method-grid">
+
+    <div class="method-card" style="--method-color:var(--violet);--method-bg:var(--violet-pale);--method-accent:var(--violet)" onclick="toggleCard(this)">
+      <div class="card-top">
+        <div class="method-icon-wrap">
+          <svg class="method-icon-svg" viewBox="0 0 30 30"><g class="icon-implante">
+            <rect x="10" y="4" width="10" height="22" rx="5"/>
+            <line x1="15" y1="4" x2="15" y2="26"/>
+            <circle cx="15" cy="8" r="1.5" fill="#7F77DD" stroke="none"/>
+            <circle cx="15" cy="14" r="1.5" fill="#7F77DD" stroke="none"/>
+            <circle cx="15" cy="20" r="1.5" fill="#7F77DD" stroke="none"/>
+          </g></svg>
+        </div>
+        <div class="card-meta">
+          <div class="method-name">Implante subdérmico</div>
+          <span class="method-chip" style="background:var(--violet-pale);color:var(--violet)">3–5 años · 99.95%</span>
+        </div>
+        <div class="expand-arrow"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l5 5 5-5"/></svg></div>
+      </div>
+      <div class="method-detail">
+        <table class="info-table">
+          <tr><td>Duración</td><td>3 a 5 años (según el tipo)</td></tr>
+          <tr><td>Efectividad</td><td>99.95% — falla solo 0.05%</td></tr>
+          <tr><td>Lactancia</td><td><span class="badge badge-ok">✓ Seguro desde semana 6</span></td></tr>
+          <tr><td>Inicio</td><td>Se coloca tras parto o aborto</td></tr>
+        </table>
+        <div class="pros-cons">
+          <div class="pros"><h4>Ventajas</h4><ul>
+            <li>No requiere acción diaria</li>
+            <li>Fertilidad inmediata al retirarlo</li>
+            <li>Útil en posparto y posaborto</li>
+          </ul></div>
+          <div class="cons"><h4>Considerar</h4><ul>
+            <li>Puede cambiar el patrón de sangrado</li>
+            <li>Requiere profesional para inserción</li>
+            <li>No protege contra ITS/VIH</li>
+          </ul></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="method-card" style="--method-color:var(--sage);--method-bg:var(--sage-pale);--method-accent:var(--sage)" onclick="toggleCard(this)">
+      <div class="card-top">
+        <div class="method-icon-wrap">
+          <svg class="method-icon-svg" viewBox="0 0 30 30"><g class="icon-implante" style="stroke:var(--sage)">
+            <circle cx="15" cy="15" r="8"/>
+            <path d="M15 7 Q19 11 19 15 Q19 19 15 23"/>
+            <path d="M11 8.5 Q13 12 13 15 Q13 18 11 21.5"/>
+          </g></svg>
+        </div>
+        <div class="card-meta">
+          <div class="method-name">Inyección trimestral</div>
+          <span class="method-chip" style="background:var(--sage-pale);color:var(--sage)">Cada 3 meses · 99.7%</span>
+        </div>
+        <div class="expand-arrow"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l5 5 5-5"/></svg></div>
+      </div>
+      <div class="method-detail">
+        <table class="info-table">
+          <tr><td>Duración</td><td>3 meses por cada dosis</td></tr>
+          <tr><td>Efectividad</td><td>99.7% perfecto / 97% uso típico</td></tr>
+          <tr><td>Lactancia</td><td><span class="badge badge-warn">⚠ Con matices en posparto</span></td></tr>
+        </table>
+        <div class="pros-cons">
+          <div class="pros"><h4>Ventajas</h4><ul>
+            <li>No requiere acción diaria</li>
+            <li>Reversible</li>
+          </ul></div>
+          <div class="cons"><h4>Considerar</h4><ul>
+            <li>Sangrado irregular frecuente</li>
+            <li>Continuación 56% al año</li>
+            <li>No protege contra ITS/VIH</li>
+          </ul></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="method-card" style="--method-color:var(--gold);--method-bg:var(--gold-pale);--method-accent:var(--gold)" onclick="toggleCard(this)">
+      <div class="card-top">
+        <div class="method-icon-wrap">
+          <svg class="method-icon-svg" viewBox="0 0 30 30"><g class="icon-pildora" style="stroke:var(--gold)">
+            <rect x="6" y="11" width="18" height="8" rx="4"/>
+            <line x1="15" y1="11" x2="15" y2="19"/>
+            <circle cx="10" cy="15" r="1.5" fill="var(--gold)" stroke="none"/>
+            <circle cx="20" cy="15" r="1.5" fill="var(--gold)" stroke="none"/>
+          </g></svg>
+        </div>
+        <div class="card-meta">
+          <div class="method-name">Minipíldora</div>
+          <span class="method-chip" style="background:var(--gold-pale);color:#8A5A00">Diaria · 99.7%</span>
+        </div>
+        <div class="expand-arrow"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l5 5 5-5"/></svg></div>
+      </div>
+      <div class="method-detail">
+        <table class="info-table">
+          <tr><td>Duración</td><td>Protección diaria (margen 3 horas)</td></tr>
+          <tr><td>Efectividad</td><td>99.7% perfecto / 92% uso típico</td></tr>
+          <tr><td>Lactancia</td><td><span class="badge badge-ok">✓ Segura desde semana 6</span></td></tr>
+        </table>
+        <div class="pros-cons">
+          <div class="pros"><h4>Ventajas</h4><ul>
+            <li>Ideal si no toleras estrógenos</li>
+            <li>No afecta la leche materna</li>
+          </ul></div>
+          <div class="cons"><h4>Considerar</h4><ul>
+            <li>Tomar a la misma hora (margen 3h)</li>
+            <li>8% de falla en uso típico</li>
+            <li>No protege contra ITS/VIH</li>
+          </ul></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- DIU -->
+  <div class="sec-head">
+    <div class="sec-head-line"></div>
+    <span class="sec-head-text">Dispositivo Intrauterino (DIU)</span>
+    <div class="sec-head-line"></div>
+  </div>
+  <div class="method-grid">
+
+    <div class="method-card" style="--method-color:var(--teal);--method-bg:var(--teal-pale);--method-accent:var(--teal)" onclick="toggleCard(this)">
+      <div class="card-top">
+        <div class="method-icon-wrap">
+          <svg class="method-icon-svg" viewBox="0 0 30 30"><g class="icon-diu" style="stroke:var(--teal)">
+            <line x1="15" y1="4" x2="15" y2="20"/>
+            <line x1="8" y1="12" x2="22" y2="12"/>
+            <path d="M8 12 Q6 16 7 20"/>
+            <path d="M22 12 Q24 16 23 20"/>
+            <circle cx="15" cy="22" r="2.5"/>
+          </g></svg>
+        </div>
+        <div class="card-meta">
+          <div class="method-name">DIU T de Cobre</div>
+          <span class="method-chip" style="background:var(--teal-pale);color:var(--teal)">10–12 años · Sin hormonas</span>
+        </div>
+        <div class="expand-arrow"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l5 5 5-5"/></svg></div>
+      </div>
+      <div class="method-detail">
+        <table class="info-table">
+          <tr><td>Duración</td><td>10 a 12 años</td></tr>
+          <tr><td>Efectividad</td><td>99.2–99.4% (sin hormonas)</td></tr>
+          <tr><td>Lactancia</td><td><span class="badge badge-ok">✓ Totalmente seguro</span></td></tr>
+          <tr><td>Emergencia</td><td>Más del 99% si se coloca en 120h</td></tr>
+        </table>
+        <div class="pros-cons">
+          <div class="pros"><h4>Ventajas</h4><ul>
+            <li>Completamente sin hormonas</li>
+            <li>Anticoncepción de emergencia</li>
+            <li>Retorno inmediato de fertilidad</li>
+            <li>Apto para adolescentes y nulíparas</li>
+          </ul></div>
+          <div class="cons"><h4>Considerar</h4><ul>
+            <li>Puede aumentar sangrado y cólicos</li>
+            <li>No protege contra ITS/VIH</li>
+          </ul></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- COMBINADOS -->
+  <div class="sec-head">
+    <div class="sec-head-line"></div>
+    <span class="sec-head-text">Métodos Hormonales Combinados · Estrógeno + Progesterona</span>
+    <div class="sec-head-line"></div>
+  </div>
+  <div class="combined-alert">
+    ⚠️ <strong>Importante para madres lactantes:</strong> Los métodos combinados (que contienen estrógenos) solo se recomiendan <strong>a partir de los 6 meses posparto</strong> en mujeres que amamantan, porque pueden reducir la producción de leche. Sin lactancia: se pueden iniciar desde el día 21 del posparto.
+  </div>
+  <div class="method-grid">
+
+    <div class="method-card" style="--method-color:var(--rose);--method-bg:var(--rose-pale);--method-accent:var(--rose)" onclick="toggleCard(this)">
+      <div class="card-top">
+        <div class="method-icon-wrap">
+          <svg class="method-icon-svg" viewBox="0 0 30 30"><g class="icon-pildora" style="stroke:var(--rose)">
+            <rect x="5" y="10" width="20" height="10" rx="5"/>
+            <line x1="15" y1="10" x2="15" y2="20"/>
+            <circle cx="10" cy="15" r="2" fill="var(--rose)" stroke="none" opacity=".4"/>
+            <circle cx="20" cy="15" r="2" fill="var(--rose)" stroke="none" opacity=".4"/>
+          </g></svg>
+        </div>
+        <div class="card-meta">
+          <div class="method-name">Píldora combinada (ACO)</div>
+          <span class="method-chip" style="background:var(--rose-pale);color:var(--rose)">Diaria · 99.7%</span>
+        </div>
+        <div class="expand-arrow"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l5 5 5-5"/></svg></div>
+      </div>
+      <div class="method-detail">
+        <table class="info-table">
+          <tr><td>Efectividad</td><td>99.7% perfecto / 92% uso típico</td></tr>
+          <tr><td>Lactancia</td><td><span class="badge badge-no">✗ Solo desde los 6 meses</span></td></tr>
+        </table>
+        <div class="pros-cons">
+          <div class="pros"><h4>Ventajas</h4><ul>
+            <li>Reduce riesgo de cáncer endometrial y ovárico</li>
+            <li>Alivia cólicos y regula los ciclos</li>
+          </ul></div>
+          <div class="cons"><h4>Considerar</h4><ul>
+            <li>8% de falla en uso típico</li>
+            <li>Tomar a la misma hora cada día</li>
+            <li>No protege contra ITS/VIH</li>
+          </ul></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="method-card" style="--method-color:var(--gold);--method-bg:var(--gold-pale);--method-accent:var(--gold)" onclick="toggleCard(this)">
+      <div class="card-top">
+        <div class="method-icon-wrap">
+          <svg class="method-icon-svg" viewBox="0 0 30 30"><g class="icon-parche" style="stroke:var(--gold)">
+            <rect x="7" y="7" width="16" height="16" rx="3"/>
+            <rect x="10" y="10" width="10" height="10" rx="2" opacity=".4" stroke="none" fill="var(--gold)"/>
+            <line x1="10" y1="15" x2="20" y2="15"/>
+            <line x1="15" y1="10" x2="15" y2="20"/>
+          </g></svg>
+        </div>
+        <div class="card-meta">
+          <div class="method-name">Parche anticonceptivo</div>
+          <span class="method-chip" style="background:var(--gold-pale);color:#8A5A00">Semanal · 99.7%</span>
+        </div>
+        <div class="expand-arrow"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l5 5 5-5"/></svg></div>
+      </div>
+      <div class="method-detail">
+        <table class="info-table">
+          <tr><td>Duración</td><td>3 semanas con parche + 1 de descanso</td></tr>
+          <tr><td>Efectividad</td><td>99.7% perfecto / 92% uso típico</td></tr>
+          <tr><td>Lactancia</td><td><span class="badge badge-no">✗ Solo desde los 6 meses</span></td></tr>
+        </table>
+        <div class="pros-cons">
+          <div class="pros"><h4>Ventajas</h4><ul>
+            <li>No requiere toma diaria</li>
+            <li>Fácil de usar y controlar</li>
+          </ul></div>
+          <div class="cons"><h4>Considerar</h4><ul>
+            <li>Puede irritar la piel local</li>
+            <li>No protege contra ITS/VIH</li>
+          </ul></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="method-card" style="--method-color:var(--teal);--method-bg:var(--teal-pale);--method-accent:var(--teal)" onclick="toggleCard(this)">
+      <div class="card-top">
+        <div class="method-icon-wrap">
+          <svg class="method-icon-svg" viewBox="0 0 30 30"><g class="icon-anillo" style="stroke:var(--teal)">
+            <circle cx="15" cy="15" r="9"/>
+            <circle cx="15" cy="15" r="5.5"/>
+          </g></svg>
+        </div>
+        <div class="card-meta">
+          <div class="method-name">Anillo vaginal</div>
+          <span class="method-chip" style="background:var(--teal-pale);color:var(--teal)">Mensual · 99.7%</span>
+        </div>
+        <div class="expand-arrow"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l5 5 5-5"/></svg></div>
+      </div>
+      <div class="method-detail">
+        <table class="info-table">
+          <tr><td>Duración</td><td>3 semanas + 1 semana de descanso</td></tr>
+          <tr><td>Efectividad</td><td>99.7% perfecto / 92% uso típico</td></tr>
+          <tr><td>Lactancia</td><td><span class="badge badge-no">✗ Solo desde los 6 meses</span></td></tr>
+        </table>
+        <div class="pros-cons">
+          <div class="pros"><h4>Ventajas</h4><ul>
+            <li>Menor dosis de estrógenos</li>
+            <li>Lo coloca la misma usuaria</li>
+          </ul></div>
+          <div class="cons"><h4>Considerar</h4><ul>
+            <li>No protege contra ITS/VIH</li>
+          </ul></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="method-card" style="--method-color:var(--sage);--method-bg:var(--sage-pale);--method-accent:var(--sage)" onclick="toggleCard(this)">
+      <div class="card-top">
+        <div class="method-icon-wrap">
+          <svg class="method-icon-svg" viewBox="0 0 30 30"><g class="icon-implante" style="stroke:var(--sage)">
+            <circle cx="15" cy="15" r="7"/>
+            <path d="M15 8 Q20 11 20 15 Q20 19 15 22"/>
+            <circle cx="10" cy="15" r="1.5" fill="var(--sage)" stroke="none"/>
+          </g></svg>
+        </div>
+        <div class="card-meta">
+          <div class="method-name">Inyectable mensual (AIC)</div>
+          <span class="method-chip" style="background:var(--sage-pale);color:var(--sage)">Cada 28 días · 99.95%</span>
+        </div>
+        <div class="expand-arrow"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l5 5 5-5"/></svg></div>
+      </div>
+      <div class="method-detail">
+        <table class="info-table">
+          <tr><td>Efectividad</td><td>99.95% perfecto / 97% uso típico</td></tr>
+          <tr><td>Lactancia</td><td><span class="badge badge-no">✗ Solo desde los 6 meses</span></td></tr>
+        </table>
+        <div class="pros-cons">
+          <div class="pros"><h4>Ventajas</h4><ul>
+            <li>No requiere acción diaria</li>
+            <li>Regula ciclos y alivia cólicos</li>
+          </ul></div>
+          <div class="cons"><h4>Considerar</h4><ul>
+            <li>Sangrado puede volverse irregular</li>
+            <li>No protege contra ITS/VIH</li>
+          </ul></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BARRERA, NATURAL, EMERGENCIA -->
+  <div class="sec-head">
+    <div class="sec-head-line"></div>
+    <span class="sec-head-text">Barrera · Natural · Emergencia</span>
+    <div class="sec-head-line"></div>
+  </div>
+  <div class="method-grid">
+
+    <div class="method-card" style="--method-color:var(--sage);--method-bg:var(--sage-pale);--method-accent:var(--sage)" onclick="toggleCard(this)">
+      <div class="card-top">
+        <div class="method-icon-wrap">
+          <svg class="method-icon-svg" viewBox="0 0 30 30"><g class="icon-condon">
+            <path d="M11 24 Q8 24 8 18 L8 10 Q8 4 15 4 Q22 4 22 10 L22 18 Q22 24 19 24 Z"/>
+            <path d="M11 24 Q15 26 19 24"/>
+            <line x1="8" y1="18" x2="22" y2="18"/>
+          </g></svg>
+        </div>
+        <div class="card-meta">
+          <div class="method-name">Condón (masculino y femenino)</div>
+          <span class="method-chip" style="background:#E8F7EE;color:var(--sage)">Doble protección</span>
+        </div>
+        <div class="expand-arrow"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l5 5 5-5"/></svg></div>
+      </div>
+      <div class="method-detail">
+        <table class="info-table">
+          <tr><td>Efectividad</td><td>82–85% uso típico (masculino)</td></tr>
+          <tr><td>Lactancia</td><td><span class="badge badge-ok">✓ Totalmente seguro</span></td></tr>
+        </table>
+        <div class="alert-ok">🛡️ <strong>El ÚNICO método</strong> que protege simultáneamente contra el embarazo Y las infecciones de transmisión sexual (ITS), incluyendo el VIH.</div>
+        <div class="pros-cons">
+          <div class="pros"><h4>Ventajas</h4><ul>
+            <li>Protege contra ITS y VIH</li>
+            <li>Sin hormonas ni efectos secundarios</li>
+            <li>Respaldo si falla otro método</li>
+          </ul></div>
+          <div class="cons"><h4>Considerar</h4><ul>
+            <li>Depende del uso correcto en cada relación</li>
+            <li>15–21% de falla en uso típico</li>
+          </ul></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="method-card" style="--method-color:#639922;--method-bg:#EEF5DC;--method-accent:#639922" onclick="toggleCard(this)">
+      <div class="card-top">
+        <div class="method-icon-wrap">
+          <svg class="method-icon-svg" viewBox="0 0 30 30"><g class="icon-mela">
+            <circle cx="15" cy="10" r="4.5"/>
+            <path d="M10 16 Q10 26 15 26 Q20 26 20 16"/>
+            <path d="M8 14 Q4 16 6 20 Q10 22 10 16"/>
+          </g></svg>
+        </div>
+        <div class="card-meta">
+          <div class="method-name">MELA (método de lactancia)</div>
+          <span class="method-chip" style="background:#EEF5DC;color:#4A7A10">Natural · 98%</span>
+        </div>
+        <div class="expand-arrow"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l5 5 5-5"/></svg></div>
+      </div>
+      <div class="method-detail">
+        <table class="info-table">
+          <tr><td>Duración</td><td>Máximo 6 meses posparto</td></tr>
+          <tr><td>Efectividad</td><td>98% (cumpliendo 3 condiciones)</td></tr>
+        </table>
+        <div class="alert-warn">⚠️ Las <strong>3 condiciones son obligatorias y simultáneas</strong>: ① Lactancia exclusiva ② Sin período menstrual ③ Bebé menor de 6 meses. Si falla una, pierde efectividad.</div>
+        <div class="pros-cons">
+          <div class="pros"><h4>Ventajas</h4><ul>
+            <li>Sin insumos ni hormonas</li>
+            <li>Natural y gratuito</li>
+          </ul></div>
+          <div class="cons"><h4>Considerar</h4><ul>
+            <li>Si falla una condición, pierde efectividad</li>
+            <li>No protege contra ITS/VIH</li>
+          </ul></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="method-card" style="--method-color:var(--rose);--method-bg:var(--rose-pale);--method-accent:var(--rose)" onclick="toggleCard(this)">
+      <div class="card-top">
+        <div class="method-icon-wrap">
+          <svg class="method-icon-svg" viewBox="0 0 30 30"><g class="icon-emergencia">
+            <circle cx="15" cy="15" r="10"/>
+            <line x1="15" y1="7" x2="15" y2="16"/>
+            <circle cx="15" cy="20" r="1.5" fill="var(--rose)" stroke="none"/>
+          </g></svg>
+        </div>
+        <div class="card-meta">
+          <div class="method-name">Anticoncepción de emergencia</div>
+          <span class="method-chip" style="background:var(--rose-pale);color:var(--rose)">Máx. 120 horas</span>
+        </div>
+        <div class="expand-arrow"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l5 5 5-5"/></svg></div>
+      </div>
+      <div class="method-detail">
+        <div class="alert-ok">✅ <strong>NO es abortiva.</strong> Actúa retrasando o inhibiendo la ovulación. No interrumpe un embarazo ya establecido.</div>
+        <table class="info-table">
+          <tr><td>Opciones</td><td>DIU cobre (&gt;99%) › Ulipristal › Levonorgestrel › Yuzpe</td></tr>
+          <tr><td>Plazo</td><td>Cuanto antes mejor; efectiva hasta 120 horas (5 días)</td></tr>
+        </table>
+        <div class="pros-cons">
+          <div class="pros"><h4>Ventajas</h4><ul>
+            <li>Segunda oportunidad tras una falla</li>
+            <li>DIU cobre: más del 99% efectivo</li>
+          </ul></div>
+          <div class="cons"><h4>Considerar</h4><ul>
+            <li>No es un método de rutina</li>
+            <li>No protege contra ITS/VIH</li>
+          </ul></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PERMANENTES -->
+  <div class="sec-head">
+    <div class="sec-head-line"></div>
+    <span class="sec-head-text">Métodos Permanentes Quirúrgicos</span>
+    <div class="sec-head-line"></div>
+  </div>
+  <div class="method-grid">
+
+    <div class="method-card" style="--method-color:var(--violet);--method-bg:var(--violet-pale);--method-accent:var(--violet)" onclick="toggleCard(this)">
+      <div class="card-top">
+        <div class="method-icon-wrap">
+          <svg class="method-icon-svg" viewBox="0 0 30 30"><g class="icon-vasectomia" style="stroke:var(--violet)">
+            <path d="M5 15 Q10 10 15 15 Q20 20 25 15"/>
+            <circle cx="8" cy="12" r="3"/>
+            <circle cx="22" cy="18" r="3"/>
+            <line x1="17" y1="8" x2="22" y2="5"/>
+            <line x1="20" y1="11" x2="25" y2="8"/>
+          </g></svg>
+        </div>
+        <div class="card-meta">
+          <div class="method-name">Vasectomía</div>
+          <span class="method-chip" style="background:var(--violet-pale);color:var(--violet)">Permanente · 99.85–99.9%</span>
+        </div>
+        <div class="expand-arrow"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l5 5 5-5"/></svg></div>
+      </div>
+      <div class="method-detail">
+        <table class="info-table">
+          <tr><td>Efectividad</td><td>99.85–99.9%</td></tr>
+          <tr><td>Lactancia</td><td><span class="badge badge-ok">✓ No afecta la leche materna</span></td></tr>
+        </table>
+        <div class="alert-warn">⚠️ Usar condón durante los <strong>3 primeros meses</strong> hasta confirmar efectividad con un espermatograma negativo.</div>
+        <div class="pros-cons">
+          <div class="pros"><h4>Ventajas</h4><ul>
+            <li>Cirugía más sencilla que la ligadura</li>
+            <li>No afecta el deseo ni el placer sexual</li>
+          </ul></div>
+          <div class="cons"><h4>Considerar</h4><ul>
+            <li>Permanente e irreversible</li>
+            <li>No protege contra ITS/VIH</li>
+          </ul></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="method-card" style="--method-color:var(--gold);--method-bg:var(--gold-pale);--method-accent:var(--gold)" onclick="toggleCard(this)">
+      <div class="card-top">
+        <div class="method-icon-wrap">
+          <svg class="method-icon-svg" viewBox="0 0 30 30"><g class="icon-ligadura" style="stroke:var(--gold)">
+            <path d="M5 12 Q9 8 13 12 Q16 15 13 18 Q10 21 13 24"/>
+            <path d="M17 12 Q21 8 25 12 Q28 15 25 18 Q22 21 25 24"/>
+            <line x1="13" y1="15" x2="17" y2="15"/>
+            <line x1="12" y1="8" x2="16" y2="5"/>
+            <line x1="15" y1="10" x2="19" y2="7"/>
+          </g></svg>
+        </div>
+        <div class="card-meta">
+          <div class="method-name">Ligadura de trompas</div>
+          <span class="method-chip" style="background:var(--gold-pale);color:#8A5A00">Permanente · 99.5%</span>
+        </div>
+        <div class="expand-arrow"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l5 5 5-5"/></svg></div>
+      </div>
+      <div class="method-detail">
+        <table class="info-table">
+          <tr><td>Efectividad</td><td>99.5%</td></tr>
+          <tr><td>Lactancia</td><td><span class="badge badge-ok">✓ No afecta la leche materna</span></td></tr>
+        </table>
+        <div class="pros-cons">
+          <div class="pros"><h4>Ventajas</h4><ul>
+            <li>Máxima efectividad definitiva</li>
+            <li>Puede realizarse en cesárea o posparto</li>
+          </ul></div>
+          <div class="cons"><h4>Considerar</h4><ul>
+            <li>Permanente e irreversible</li>
+            <li>Conlleva riesgos quirúrgicos</li>
+            <li>No protege contra ITS/VIH</li>
+          </ul></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ GAMES TAB ═══ -->
+<div id="tab-games" class="page-wrap" style="display:none">
+
+  <div id="games-menu">
+    <div class="intro-banner">
+      <div class="intro-banner-icon">🎯</div>
+      <p>¡Pon a prueba lo que aprendiste! Elige un juego y descubre cuánto sabes sobre planificación familiar. <strong>¡Ganar puntos te hace más experto/a!</strong></p>
+    </div>
+
+    <div class="games-grid">
+
+      <div class="game-card" style="--game-grad:linear-gradient(135deg,#2D6A4F,#52B788);--game-bg:var(--sage-pale)">
+        <div class="game-icon-wrap">🔗</div>
+        <div class="game-name">Mitos y Realidades</div>
+        <div class="game-desc">Relaciona cada mito con su realidad correcta. ¡Derriba las falsas creencias!</div>
+        <button class="play-btn" onclick="startGame('myths')">▶ Jugar</button>
+      </div>
+
+      <div class="game-card" style="--game-grad:linear-gradient(135deg,#1B7F8E,#5C4D8A);--game-bg:var(--teal-pale)">
+        <div class="game-icon-wrap">❓</div>
+        <div class="game-name">Preguntas A B C D</div>
+        <div class="game-desc">10 preguntas sobre métodos anticonceptivos. ¿Cuánto sabes realmente?</div>
+        <button class="play-btn" onclick="startGame('quiz')">▶ Jugar</button>
+      </div>
+
+      <div class="game-card" style="--game-grad:linear-gradient(135deg,#B5446E,#5C4D8A);--game-bg:var(--rose-pale)">
+        <div class="game-icon-wrap">💊</div>
+        <div class="game-name">Planificación Crush</div>
+        <div class="game-desc">Combina 3 o más métodos iguales · 10 niveles · ¡Aprende jugando!</div>
+        <button class="play-btn" onclick="startGame('crush')">▶ Jugar</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MYTHS GAME -->
+  <div id="game-myths" class="game-area">
+    <div class="game-header">
+      <div class="game-title">🔗 Mitos y Realidades</div>
+      <button class="back-btn" onclick="backToMenu()">← Volver</button>
+    </div>
+    <div class="score-row">
+      <div class="score-pill"><span class="score-pill-val" id="myth-score">0</span><span class="score-pill-lbl">Puntos</span></div>
+      <div class="score-pill"><span class="score-pill-val" id="myth-hits">0/6</span><span class="score-pill-lbl">Aciertos</span></div>
+    </div>
+    <p style="font-size:.82rem;color:var(--ink-muted);margin-bottom:1rem">Selecciona un <strong style="color:var(--coral)">mito</strong> y luego su <strong style="color:var(--sage)">realidad</strong> correspondiente.</p>
+    <div class="myth-cols">
+      <div>
+        <div class="myth-col-head left">🚫 MITOS</div>
+        <div id="myth-left"></div>
+      </div>
+      <div>
+        <div class="myth-col-head right">✅ REALIDADES</div>
+        <div id="myth-right"></div>
+      </div>
+    </div>
+    <div class="q-feedback" id="myth-feedback"></div>
+    <div id="myth-end" style="display:none">
+      <div class="end-screen">
+        <div class="end-trophy">🎉</div>
+        <div class="end-title">¡Mitos derribados!</div>
+        <div class="end-score" id="myth-final">0</div>
+        <div class="end-sub">puntos finales</div>
+        <button class="play-btn" onclick="initMyths()">Jugar de nuevo</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ GAME -->
+  <div id="game-quiz" class="game-area">
+    <div class="game-header">
+      <div class="game-title">❓ Preguntas A B C D</div>
+      <button class="back-btn" onclick="backToMenu()">← Volver</button>
+    </div>
+    <div class="score-row">
+      <div class="score-pill"><span class="score-pill-val" id="quiz-score">0</span><span class="score-pill-lbl">Puntos</span></div>
+      <div class="score-pill"><span class="score-pill-val" id="quiz-num">1/10</span><span class="score-pill-lbl">Pregunta</span></div>
+    </div>
+    <div class="prog-bar"><div class="prog-fill" id="quiz-prog" style="width:10%"></div></div>
+    <div id="quiz-container"></div>
+    <button class="next-btn" id="quiz-next" onclick="nextQuestion()">Siguiente →</button>
+    <div id="quiz-end" style="display:none">
+      <div class="end-screen">
+        <div class="end-trophy">🏆</div>
+        <div class="end-title">¡Terminaste!</div>
+        <div class="end-score" id="quiz-final">0</div>
+        <div class="end-sub">puntos de 100 posibles</div>
+        <button class="play-btn" onclick="initQuiz()">Jugar de nuevo</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CRUSH GAME -->
+  <div id="game-crush" class="game-area">
+    <div class="game-header">
+      <div class="game-title">💊 Planificación Crush</div>
+      <button class="back-btn" onclick="backToMenu()">← Volver</button>
+    </div>
+    <div class="score-row">
+      <div class="score-pill"><span class="score-pill-val" id="cc-score">0</span><span class="score-pill-lbl">Puntos</span></div>
+      <div class="score-pill"><span class="score-pill-val" id="cc-level">1</span><span class="score-pill-lbl">Nivel</span></div>
+      <div class="score-pill"><span class="score-pill-val" id="cc-target">100</span><span class="score-pill-lbl">Meta</span></div>
+      <div class="score-pill"><span class="score-pill-val" id="cc-moves">20</span><span class="score-pill-lbl">Movimientos</span></div>
+    </div>
+    <div class="prog-bar"><div class="prog-fill" id="cc-prog" style="width:0%"></div></div>
+    <div class="cc-wrap">
+      <div class="cc-legend" id="cc-legend"></div>
+      <div class="cc-board" id="cc-board"></div>
+    </div>
+    <div class="level-msg" id="cc-msg"></div>
+  </div>
+
+</div>
+
+<script>
+// ── TABS ──
+function showTab(t){
+  document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.toggle('active',i===(t==='info'?0:1)));
+  document.getElementById('tab-info').style.display=t==='info'?'':'none';
+  document.getElementById('tab-games').style.display=t==='games'?'':'none';
+}
+function toggleCard(el){el.classList.toggle('open')}
+
+// ── GAMES NAV ──
+function startGame(g){
+  document.getElementById('games-menu').style.display='none';
+  document.querySelectorAll('.game-area').forEach(a=>a.classList.remove('active'));
+  document.getElementById('game-'+g).classList.add('active');
+  if(g==='myths')initMyths();
+  else if(g==='quiz')initQuiz();
+  else if(g==='crush')initCrush();
+}
+function backToMenu(){
+  document.getElementById('games-menu').style.display='';
+  document.querySelectorAll('.game-area').forEach(a=>a.classList.remove('active'));
+}
+
+// ── MYTHS ──
+const MYTHS=[
+  {myth:'La pastilla del día después es un método abortivo.',real:'No es abortiva. Retrasa la ovulación y no interrumpe un embarazo ya establecido.'},
+  {myth:'El condón solo lo deben usar personas con muchas parejas.',real:'El condón es recomendado para todas las personas ya que es el único que previene ITS y embarazo.'},
+  {myth:'El DIU de cobre solo pueden usarlo mujeres que ya tuvieron hijos.',real:'El DIU puede usarse también en mujeres que nunca han tenido hijos e incluso en adolescentes.'},
+  {myth:'La vasectomía afecta el deseo y el placer sexual del hombre.',real:'La vasectomía no afecta el deseo sexual, la erección ni el placer. Solo interrumpe los conductos que llevan los espermatozoides.'},
+  {myth:'Dar pecho es 100% seguro como método anticonceptivo siempre.',real:'El MELA tiene 98% de efectividad solo si se cumplen 3 condiciones estrictas: lactancia exclusiva, sin periodo y bebé menor de 6 meses.'},
+  {myth:'Los métodos hormonales protegen también contra el VIH.',real:'Ningún método hormonal protege contra el VIH ni las ITS. Solo el condón ofrece esa doble protección.'}
+];
+let mSelected=null,mScore=0,mHits=0,mMatched=[];
+function initMyths(){
+  mSelected=null;mScore=0;mHits=0;mMatched=[];
+  document.getElementById('myth-score').textContent=0;
+  document.getElementById('myth-hits').textContent='0/6';
+  document.getElementById('myth-feedback').className='q-feedback';
+  document.getElementById('myth-feedback').textContent='';
+  document.getElementById('myth-end').style.display='none';
+  const lef=document.getElementById('myth-left');
+  const rig=document.getElementById('myth-right');
+  lef.innerHTML='';rig.innerHTML='';
+  const ridx=[...MYTHS.keys()].sort(()=>Math.random()-.5);
+  MYTHS.forEach((m,i)=>{
+    const ml=document.createElement('div');
+    ml.className='myth-item';ml.textContent=m.myth;
+    ml.dataset.idx=i;ml.dataset.side='myth';
+    ml.onclick=()=>selectMyth(ml,'myth',i);
+    lef.appendChild(ml);
+  });
+  ridx.forEach(i=>{
+    const mr=document.createElement('div');
+    mr.className='myth-item';mr.textContent=MYTHS[i].real;
+    mr.dataset.idx=i;mr.dataset.side='real';
+    mr.onclick=()=>selectMyth(mr,'real',i);
+    rig.appendChild(mr);
+  });
+}
+function selectMyth(el,side,idx){
+  if(mMatched.includes(idx))return;
+  if(!mSelected){mSelected={el,side,idx};el.classList.add('selected');return;}
+  if(mSelected.side===side){mSelected.el.classList.remove('selected');mSelected={el,side,idx};el.classList.add('selected');return;}
+  const a=mSelected,b={el,side,idx};
+  const mythIdx=a.side==='myth'?a.idx:b.idx;
+  const realIdx=a.side==='real'?a.idx:b.idx;
+  const fb=document.getElementById('myth-feedback');
+  if(mythIdx===realIdx){
+    a.el.classList.remove('selected');a.el.classList.add('matched');
+    b.el.classList.remove('selected');b.el.classList.add('matched');
+    mMatched.push(mythIdx);mHits++;mScore+=20;
+    document.getElementById('myth-score').textContent=mScore;
+    document.getElementById('myth-hits').textContent=mHits+'/6';
+    fb.className='q-feedback show ok';fb.textContent='✓ ¡Correcto! +20 puntos';
+    if(mHits===6){setTimeout(()=>{document.getElementById('myth-final').textContent=mScore;document.getElementById('myth-end').style.display='block';},600);}
+  }else{
+    a.el.classList.remove('selected');a.el.classList.add('wrong-match');
+    b.el.classList.remove('selected');b.el.classList.add('wrong-match');
+    fb.className='q-feedback show fail';fb.textContent='✗ No coinciden. ¡Intenta de nuevo!';
+    setTimeout(()=>{a.el.classList.remove('wrong-match');b.el.classList.remove('wrong-match');},800);
+  }
+  mSelected=null;
+}
+
+// ── QUIZ ──
+const QUESTIONS=[
+  {q:'¿Cuál es el único método anticonceptivo que protege contra el VIH y las infecciones de transmisión sexual?',opts:['Píldora combinada','DIU de cobre','Condón','Implante subdérmico'],ans:2,exp:'El condón es el único método que ofrece doble protección: embarazo e ITS, incluido el VIH.'},
+  {q:'¿Cuánto tiempo dura la protección del implante subdérmico?',opts:['6 meses','1 año','3 a 5 años','10 a 12 años'],ans:2,exp:'El implante protege por 3 a 5 años dependiendo del tipo, con una tasa de falla de solo 0.05%.'},
+  {q:'¿La pastilla del día siguiente puede interrumpir un embarazo ya establecido?',opts:['Sí, es abortiva','No, retrasa la ovulación','Solo si se toma antes de 24 horas','Depende de la marca'],ans:1,exp:'No es abortiva. Actúa retrasando o inhibiendo la ovulación antes de que ocurra.'},
+  {q:'¿Cuánto tiempo después del parto puede una madre lactante iniciar métodos hormonales combinados?',opts:['Desde el primer día','A los 21 días','A los 3 meses','A los 6 meses'],ans:3,exp:'Los métodos con estrógenos solo pueden iniciarse 6 meses después del parto en mujeres que amamantan, porque reducen la leche.'},
+  {q:'¿Cuáles son las 3 condiciones del MELA para que sea efectivo?',opts:['Lactancia exclusiva, sin periodo y bebé < 6 meses','Lactancia exclusiva, tomar vitaminas y bebé < 1 año','Sin periodo, bebé < 3 meses y no tener relaciones','Lactancia mixta, sin periodo y bebé < 6 meses'],ans:0,exp:'Las 3 condiciones son obligatorias y simultáneas: lactancia exclusiva, amenorrea y bebé menor de 6 meses.'},
+  {q:'Tras una vasectomía, ¿cuándo se confirma que es efectiva?',opts:['Inmediatamente después','A la semana','A los 3 meses con espermatograma negativo','Al año del procedimiento'],ans:2,exp:'La efectividad se confirma a los 3 meses con un espermatograma que muestre ausencia de espermatozoides.'},
+  {q:'¿Cuál de estos métodos NO tiene hormonas?',opts:['Implante subdérmico','DIU T de cobre','Anillo vaginal','Inyectable mensual'],ans:1,exp:'El DIU de cobre no contiene hormonas. Actúa liberando iones de cobre tóxicos para los espermatozoides.'},
+  {q:'Si se olvida la minipíldora y han pasado más de 3 horas, ¿qué debe hacer?',opts:['Tomar dos pastillas al día siguiente','Tomar la dosis olvidada y usar condón 2 días','Suspender el método inmediatamente','Nada, no afecta la protección'],ans:1,exp:'Debe tomar la dosis tan pronto la recuerde y usar condón o abstenerse por los siguientes 2 días.'},
+  {q:'¿En cuánto tiempo puede usarse la anticoncepción de emergencia?',opts:['Máximo 24 horas','Máximo 48 horas','Máximo 120 horas (5 días)','Máximo 7 días'],ans:2,exp:'La anticoncepción de emergencia puede usarse hasta 120 horas (5 días), aunque es más efectiva en las primeras 72 horas.'},
+  {q:'¿Cuál es el método más efectivo como anticoncepción de emergencia?',opts:['Pastilla de levonorgestrel','Método de Yuzpe','DIU de cobre','Acetato de ulipristal'],ans:2,exp:'El DIU de cobre insertado dentro de las 120 horas reduce el riesgo de embarazo en más del 99%, siendo el más efectivo.'}
+];
+let qIdx=0,qScore=0;
+function initQuiz(){
+  qIdx=0;qScore=0;
+  document.getElementById('quiz-score').textContent=0;
+  document.getElementById('quiz-end').style.display='none';
+  document.getElementById('quiz-container').style.display='';
+  document.getElementById('quiz-next').style.display='none';
+  renderQuestion();
+}
+function renderQuestion(){
+  const q=QUESTIONS[qIdx];
+  document.getElementById('quiz-num').textContent=(qIdx+1)+'/10';
+  document.getElementById('quiz-prog').style.width=((qIdx+1)*10)+'%';
+  const html=`<div class="q-card">
+    <div class="q-text">${q.q}</div>
+    <div class="q-opts">${q.opts.map((o,i)=>`<button class="q-opt" onclick="answerQ(${i})"><strong>${['A','B','C','D'][i]}</strong> &nbsp;${o}</button>`).join('')}</div>
+    <div class="q-feedback" id="qfb"></div>
+  </div>`;
+  document.getElementById('quiz-container').innerHTML=html;
+  document.getElementById('quiz-next').style.display='none';
+}
+function answerQ(i){
+  const q=QUESTIONS[qIdx];
+  document.querySelectorAll('.q-opt').forEach(b=>b.onclick=null);
+  document.querySelectorAll('.q-opt')[q.ans].classList.add('correct');
+  const fb=document.getElementById('qfb');
+  if(i===q.ans){
+    qScore+=10;document.getElementById('quiz-score').textContent=qScore;
+    fb.className='q-feedback show ok';fb.textContent='✓ ¡Correcto! +10 puntos. '+q.exp;
+    document.querySelectorAll('.q-opt')[i].classList.add('correct');
+  }else{
+    document.querySelectorAll('.q-opt')[i].classList.add('wrong');
+    fb.className='q-feedback show fail';fb.textContent='✗ Incorrecto. '+q.exp;
+  }
+  document.getElementById('quiz-next').style.display='block';
+}
+function nextQuestion(){
+  qIdx++;
+  if(qIdx>=QUESTIONS.length){
+    document.getElementById('quiz-container').style.display='none';
+    document.getElementById('quiz-next').style.display='none';
+    document.getElementById('quiz-final').textContent=qScore;
+    document.getElementById('quiz-end').style.display='block';
+  }else{renderQuestion();}
+}
+
+// ── CANDY CRUSH (con representaciones visuales SVG) ──
+const METHODS=[
+  {
+    name:'Condón',color:'#1D9E75',bg:'#D8F3DC',
+    svg:`<svg viewBox="0 0 32 32" width="28" height="28"><g fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round">
+      <path d="M11 28 Q8 28 8 22 L8 12 Q8 4 16 4 Q24 4 24 12 L24 22 Q24 28 21 28 Z"/>
+      <line x1="8" y1="22" x2="24" y2="22"/>
+    </g></svg>`
+  },
+  {
+    name:'DIU',color:'#1B7F8E',bg:'#D4F1F4',
+    svg:`<svg viewBox="0 0 32 32" width="28" height="28"><g fill="none" stroke="#1B7F8E" stroke-width="2.2" stroke-linecap="round">
+      <line x1="16" y1="4" x2="16" y2="22"/>
+      <line x1="8" y1="13" x2="24" y2="13"/>
+      <path d="M8 13 Q6 18 8 22"/>
+      <path d="M24 13 Q26 18 24 22"/>
+      <circle cx="16" cy="24" r="2.5"/>
+    </g></svg>`
+  },
+  {
+    name:'Implante',color:'#7F77DD',bg:'#EDE9F8',
+    svg:`<svg viewBox="0 0 32 32" width="28" height="28"><g fill="none" stroke="#7F77DD" stroke-width="2.2" stroke-linecap="round">
+      <rect x="11" y="4" width="10" height="24" rx="5"/>
+      <circle cx="16" cy="9" r="1.5" fill="#7F77DD" stroke="none"/>
+      <circle cx="16" cy="16" r="1.5" fill="#7F77DD" stroke="none"/>
+      <circle cx="16" cy="23" r="1.5" fill="#7F77DD" stroke="none"/>
+    </g></svg>`
+  },
+  {
+    name:'Píldora',color:'#D4537E',bg:'#FCE8F0',
+    svg:`<svg viewBox="0 0 32 32" width="28" height="28"><g fill="none" stroke="#D4537E" stroke-width="2.2" stroke-linecap="round">
+      <rect x="5" y="11" width="22" height="10" rx="5"/>
+      <line x1="16" y1="11" x2="16" y2="21"/>
+      <circle cx="10" cy="16" r="2" fill="#D4537E" stroke="none" opacity=".5"/>
+      <circle cx="22" cy="16" r="2" fill="#D4537E" stroke="none" opacity=".5"/>
+    </g></svg>`
+  },
+  {
+    name:'Parche',color:'#BA7517',bg:'#FDF3DC',
+    svg:`<svg viewBox="0 0 32 32" width="28" height="28"><g fill="none" stroke="#BA7517" stroke-width="2.2" stroke-linecap="round">
+      <rect x="6" y="6" width="20" height="20" rx="4"/>
+      <rect x="10" y="10" width="12" height="12" rx="2" fill="#BA7517" stroke="none" opacity=".2"/>
+      <line x1="10" y1="16" x2="22" y2="16"/>
+      <line x1="16" y1="10" x2="16" y2="22"/>
+    </g></svg>`
+  },
+  {
+    name:'Anillo',color:'#1B7F8E',bg:'#D4F1F4',
+    svg:`<svg viewBox="0 0 32 32" width="28" height="28"><g fill="none" stroke="#1B7F8E" stroke-width="2.8" stroke-linecap="round">
+      <circle cx="16" cy="16" r="10"/>
+      <circle cx="16" cy="16" r="5.5"/>
+    </g></svg>`
+  },
+  {
+    name:'MELA',color:'#639922',bg:'#EEF5DC',
+    svg:`<svg viewBox="0 0 32 32" width="28" height="28"><g fill="none" stroke="#639922" stroke-width="2.2" stroke-linecap="round">
+      <circle cx="16" cy="10" r="5"/>
+      <path d="M11 17 Q11 28 16 28 Q21 28 21 17"/>
+      <path d="M9 15 Q4 17 6 22 Q10 25 11 17"/>
+    </g></svg>`
+  }
+];
+
+const LEVEL_MSGS=[
+  '¡El condón es tu mejor aliado! Úsalo siempre, en cada relación sexual. 🟢',
+  '¡El DIU dura hasta 12 años! Una decisión, años de tranquilidad. 💙',
+  '¡El implante es casi perfecto! 0.05% de falla. Colócalo y olvídate por años. 💜',
+  '¡La constancia es clave! Si eliges la píldora, tómala a la misma hora siempre. 🌸',
+  '¡El parche facilita tu vida! Cámbialo cada semana sin preocuparte por el olvido diario. 🟨',
+  '¡El anillo tiene la menor dosis de estrógenos! Una buena opción para cuidar tu cuerpo. 💍',
+  '¡Lactar también protege! El MELA es 98% efectivo si cumples las 3 condiciones. 🌿',
+  '¡Planificar es un acto de amor propio! Cada método es una herramienta para vivir tranquilo/a. 💙',
+  '¡La doble protección es lo mejor! Condón + otro método = máxima seguridad. 🛡️',
+  '¡Lo lograste! Recuerda: tienes derecho a elegir el método que mejor se adapte a tu vida. 🌿'
+];
+const LEVEL_TARGETS=[100,150,200,250,300,350,400,450,500,600];
+const ROWS=7,COLS=7;
+let ccBoard=[],ccScore=0,ccLevel=1,ccMoves=20,ccSelected=null,ccAnimating=false;
+
+function initCrush(){
+  ccScore=0;ccLevel=1;ccMoves=20;ccSelected=null;ccAnimating=false;
+  document.getElementById('cc-score').textContent=0;
+  document.getElementById('cc-level').textContent=1;
+  document.getElementById('cc-target').textContent=LEVEL_TARGETS[0];
+  document.getElementById('cc-moves').textContent=20;
+  document.getElementById('cc-prog').style.width='0%';
+  document.getElementById('cc-msg').className='level-msg';
+  // Build legend
+  const leg=document.getElementById('cc-legend');
+  leg.innerHTML=METHODS.map(m=>`<div class="cc-legend-item">${m.svg}<span>${m.name}</span></div>`).join('');
+  generateBoard();renderBoard();
+}
+function generateBoard(){
+  ccBoard=[];
+  for(let r=0;r<ROWS;r++){
+    ccBoard[r]=[];
+    for(let c=0;c<COLS;c++){ccBoard[r][c]=Math.floor(Math.random()*METHODS.length);}
+  }
+}
+function renderBoard(){
+  const b=document.getElementById('cc-board');
+  b.innerHTML='';
+  for(let r=0;r<ROWS;r++){
+    for(let c=0;c<COLS;c++){
+      const m=METHODS[ccBoard[r][c]];
+      const cell=document.createElement('div');
+      cell.className='cc-cell';
+      cell.dataset.r=r;cell.dataset.c=c;
+      cell.style.background=m.bg;
+      cell.innerHTML=`<div class="cc-cell-inner">${m.svg}</div>`;
+      cell.onclick=()=>clickCell(r,c);
+      b.appendChild(cell);
+    }
+  }
+}
+function getCell(r,c){return document.querySelector(`.cc-cell[data-r="${r}"][data-c="${c}"]`);}
+function clickCell(r,c){
+  if(ccAnimating||ccMoves<=0)return;
+  if(!ccSelected){ccSelected={r,c};getCell(r,c).classList.add('selected');return;}
+  const {r:r2,c:c2}=ccSelected;
+  getCell(r2,c2).classList.remove('selected');
+  if((Math.abs(r-r2)+Math.abs(c-c2))===1){
+    ccSelected=null;
+    swap(r,c,r2,c2);
+    ccMoves--;
+    document.getElementById('cc-moves').textContent=ccMoves;
+    setTimeout(()=>{
+      const matches=findMatches();
+      if(matches.length>0){processMatches(matches);}
+      else{swap(r,c,r2,c2);renderBoard();}
+    },100);
+  }else{ccSelected={r,c};getCell(r,c).classList.add('selected');}
+}
+function swap(r1,c1,r2,c2){const t=ccBoard[r1][c1];ccBoard[r1][c1]=ccBoard[r2][c2];ccBoard[r2][c2]=t;renderBoard();}
+function findMatches(){
+  const m=new Set();
+  for(let r=0;r<ROWS;r++){
+    for(let c=0;c<COLS-2;c++){
+      if(ccBoard[r][c]===ccBoard[r][c+1]&&ccBoard[r][c]===ccBoard[r][c+2]){
+        let len=3;while(c+len<COLS&&ccBoard[r][c]===ccBoard[r][c+len])len++;
+        for(let i=0;i<len;i++)m.add(r+','+(c+i));
+      }
+    }
+  }
+  for(let c=0;c<COLS;c++){
+    for(let r=0;r<ROWS-2;r++){
+      if(ccBoard[r][c]===ccBoard[r+1][c]&&ccBoard[r][c]===ccBoard[r+2][c]){
+        let len=3;while(r+len<ROWS&&ccBoard[r][c]===ccBoard[r+len][c])len++;
+        for(let i=0;i<len;i++)m.add((r+i)+','+c);
+      }
+    }
+  }
+  return [...m].map(s=>{const[r,c]=s.split(',');return{r:+r,c:+c};});
+}
+function processMatches(matches){
+  ccAnimating=true;
+  const grouped={};
+  matches.forEach(({r,c})=>{const key=ccBoard[r][c];grouped[key]=(grouped[key]||0)+1;});
+  let pts=0;
+  matches.forEach(({r,c})=>{const count=grouped[ccBoard[r][c]];pts+=count>=5?15:count===4?10:5;});
+  pts=Math.floor(pts/matches.length)*matches.length;
+  matches.forEach(({r,c})=>{const el=getCell(r,c);if(el)el.classList.add('matched');});
+  setTimeout(()=>{
+    matches.forEach(({r,c})=>{ccBoard[r][c]=-1;});
+    for(let c=0;c<COLS;c++){
+      let empty=ROWS-1;
+      for(let r=ROWS-1;r>=0;r--){
+        if(ccBoard[r][c]!==-1){ccBoard[empty][c]=ccBoard[r][c];if(empty!==r)ccBoard[r][c]=-1;empty--;}
+      }
+      for(let r=empty;r>=0;r--){ccBoard[r][c]=Math.floor(Math.random()*METHODS.length);}
+    }
+    ccScore+=pts;
+    document.getElementById('cc-score').textContent=ccScore;
+    const target=LEVEL_TARGETS[ccLevel-1];
+    const pct=Math.min(100,Math.round(ccScore/target*100));
+    document.getElementById('cc-prog').style.width=pct+'%';
+    renderBoard();
+    ccAnimating=false;
+    setTimeout(()=>{
+      const m2=findMatches();
+      if(m2.length>0)processMatches(m2);
+      else checkLevelUp();
+    },200);
+  },350);
+}
+function checkLevelUp(){
+  const target=LEVEL_TARGETS[ccLevel-1];
+  if(ccScore>=target){
+    const msg=document.getElementById('cc-msg');
+    msg.textContent=LEVEL_MSGS[ccLevel-1];
+    msg.className='level-msg show';
+    if(ccLevel>=10){
+      setTimeout(()=>{msg.textContent='🏆 ¡Felicitaciones! Completaste los 10 niveles. ¡Eres experto/a en planificación familiar!';},2000);
+      return;
+    }
+    setTimeout(()=>{
+      ccLevel++;ccMoves=20+ccLevel*2;ccSelected=null;
+      document.getElementById('cc-level').textContent=ccLevel;
+      document.getElementById('cc-moves').textContent=ccMoves;
+      document.getElementById('cc-target').textContent=LEVEL_TARGETS[ccLevel-1];
+      msg.className='level-msg';
+      generateBoard();renderBoard();
+    },3000);
+  }else if(ccMoves<=0){
+    const msg=document.getElementById('cc-msg');
+    msg.textContent='¡Sin movimientos! Puntaje: '+ccScore+'/'+target+'. ¿Lo intentas de nuevo?';
+    msg.className='level-msg show';
+    setTimeout(()=>{
+      msg.innerHTML=msg.textContent+'<br><button class="play-btn" style="margin-top:10px;background:#fff;color:var(--ink)" onclick="initCrush()">Reintentar</button>';
+    },500);
+  }
+}
+</script>
+</body>
+</html>
